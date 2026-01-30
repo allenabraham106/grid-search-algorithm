@@ -10,3 +10,30 @@ grid = [
 
 for row in grid:
     print(row)
+
+
+start = (0, 3)
+goal = (4, 4)
+
+print(f"Start: {start}")
+print(f"Goal: {goal}")
+
+
+# movement handeler
+def get_neighbors(pos, grid):
+    row, col = pos
+    move = [
+        (0, 1),  # right
+        (0, -1),  # left
+        (1, 0),  # up
+        (-1, 0),  # down
+    ]
+    neighbors = []
+
+    for row_change, col_change in move:
+        new_row = row + row_change
+        new_col = col + col_change
+        if 0 <= new_row <= len(grid) and 0 <= new_col <= len(grid[0]):
+            if grid[new_row][new_col]:
+                neighbors.append((new_row, new_col))
+    return neighbors
