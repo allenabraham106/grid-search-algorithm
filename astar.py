@@ -25,15 +25,25 @@ def get_neighbors(pos, grid):
     move = [
         (0, 1),  # right
         (0, -1),  # left
-        (1, 0),  # up
-        (-1, 0),  # down
+        (1, 0),  # down
+        (-1, 0),  # up
     ]
     neighbors = []
 
     for row_change, col_change in move:
         new_row = row + row_change
         new_col = col + col_change
-        if 0 <= new_row <= len(grid) and 0 <= new_col <= len(grid[0]):
-            if grid[new_row][new_col]:
+        if 0 <= new_row < len(grid) and 0 <= new_col < len(grid[0]):
+            print(new_row, new_col, grid[new_row][new_col])
+            if grid[new_row][new_col] == 0:
                 neighbors.append((new_row, new_col))
     return neighbors
+
+
+def heuristic(current, goal):
+    # how far apart are the rows and how far apart is our location on the rows
+    return abs(current[0] - goal[0]) + abs(current[1] - goal[1])
+
+
+print(get_neighbors(start, grid))
+print(heuristic(start, goal))
