@@ -8,13 +8,14 @@ grid = [
     [1, 1, 0, 0, 0],
 ]
 
+# print the whole grind
 for row in grid:
     print(row)
-
 
 start = (0, 3)
 goal = (4, 4)
 
+# based on values set above
 print(f"Start: {start}")
 print(f"Goal: {goal}")
 
@@ -30,6 +31,7 @@ def get_neighbors(pos, grid):
     ]
     neighbors = []
 
+    # move in every direction and keep track of neighbors
     for row_change, col_change in move:
         new_row = row + row_change
         new_col = col + col_change
